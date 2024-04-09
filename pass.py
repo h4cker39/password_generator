@@ -1,4 +1,5 @@
 import argparse
+import sys
 import random
 #Passsword Generator
 
@@ -6,7 +7,7 @@ letters="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
 digits="0123456789"
 characters="$%&*()!@#/;':"
 ss = [letters,digits,characters]
-def  lettersAndDigits(digit):
+def  lettersDigitsAndCharacters(digit):
     password = ""
     #randomly select which one will go first 
     for i in range(int(digit)+1):
@@ -17,7 +18,7 @@ def  lettersAndDigits(digit):
            password += sr
     return password
 
-def  lettersDigitsAndCharacters():
+def  lettersAndDigits():
      print("letters, digits and characters")
 def  letters():
     print("only letters")
@@ -35,7 +36,7 @@ if(int(args.size) <= 6):
     print ("Size is required to be above 6 to be secure")
     exit
 if(args.digit  and args.letters and args.unicode ):
-    lettersDigitsAndCharacters()
+    print(lettersDigitsAndCharacters(args.size))
 elif(args.digit and args.letters):
     print(lettersAndDigits(args.size))
 else:
