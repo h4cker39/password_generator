@@ -24,13 +24,20 @@ def  lettersAndDigits(digit):
     #randomly select which one will go first 
     for i in range(int(digit)+1):
            index,number = random.choice(list(enumerate(s2)))
-           r = ss[index]
+           r = s2[index]
            index,number = random.choice(list(enumerate(r)))
            sr = r[index]
            password += sr
     return password
-def  letters():
-    print("only letters")
+
+
+def letters(digit):
+    password = ""
+    for i in range(int(digit)+1):
+        index,number = random.choice(list(enumerate(letters)))
+        let = letters[index]
+        password += let
+    return let
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-d","--digit", required=False, help="-d for digits from 0-9")
@@ -44,9 +51,11 @@ args2 = vars(ap.parse_args())
 if(int(args.size) <= 6):
     print ("Size is required to be above 6 to be secure")
     exit
+
+
 if(args.digit  and args.letters and args.unicode ):
     print(lettersDigitsAndCharacters(args.size))
 elif(args.digit and args.letters):
     print(lettersAndDigits(args.size))
 else:
-    letters()
+    print(letters(args.size))
