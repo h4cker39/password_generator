@@ -7,6 +7,7 @@ letters="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
 digits="0123456789"
 characters="$%&*()!@#/;':"
 ss = [letters,digits,characters]
+s2 = [letters,digits]
 def  lettersDigitsAndCharacters(digit):
     password = ""
     #randomly select which one will go first 
@@ -18,8 +19,16 @@ def  lettersDigitsAndCharacters(digit):
            password += sr
     return password
 
-def  lettersAndDigits():
-     print("letters, digits and characters")
+def  lettersAndDigits(digit):
+    password = ""
+    #randomly select which one will go first 
+    for i in range(int(digit)+1):
+           index,number = random.choice(list(enumerate(s2)))
+           r = ss[index]
+           index,number = random.choice(list(enumerate(r)))
+           sr = r[index]
+           password += sr
+    return password
 def  letters():
     print("only letters")
 
