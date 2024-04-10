@@ -8,6 +8,7 @@ digits="0123456789"
 characters="$%&*()!@#/;':"
 ss = [letters,digits,characters]
 s2 = [letters,digits]
+s1 = [letters]
 def  lettersDigitsAndCharacters(digit):
     password = ""
     #randomly select which one will go first 
@@ -31,13 +32,15 @@ def  lettersAndDigits(digit):
     return password
 
 
-def letters(digit):
+def letters_d(digit):
     password = ""
     for i in range(int(digit)+1):
-        index,number = random.choice(list(enumerate(letters)))
-        let = letters[index]
-        password += let
-    return let
+          index,number = random.choice(list(enumerate(s1)))
+          rs = s2[index]
+          index,number = random.choice(list(enumerate(rs)))
+          sr = rs[index]
+          password += sr
+    return password
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-d","--digit", required=False, help="-d for digits from 0-9")
@@ -57,5 +60,5 @@ if(args.digit  and args.letters and args.unicode ):
     print(lettersDigitsAndCharacters(args.size))
 elif(args.digit and args.letters):
     print(lettersAndDigits(args.size))
-else:
-    print(letters(args.size))
+elif(args.letters):
+    print(letters_d(args.size))
